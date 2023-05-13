@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D527D5E2A0FD4260093C34E /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D527D5D2A0FD4260093C34E /* Temperature.swift */; };
+		7D527D602A0FD4520093C34E /* Length.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D527D5F2A0FD4520093C34E /* Length.swift */; };
+		7D527D622A10349F0093C34E /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D527D612A10349F0093C34E /* Tempo.swift */; };
+		7D527D642A1034AA0093C34E /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D527D632A1034AA0093C34E /* Volume.swift */; };
 		7DD3A7D12A0D6ADA0060347D /* DesafioUmApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD3A7D02A0D6ADA0060347D /* DesafioUmApp.swift */; };
 		7DD3A7D32A0D6ADA0060347D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD3A7D22A0D6ADA0060347D /* ContentView.swift */; };
 		7DD3A7D52A0D6ADB0060347D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DD3A7D42A0D6ADB0060347D /* Assets.xcassets */; };
@@ -14,6 +18,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D527D5D2A0FD4260093C34E /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
+		7D527D5F2A0FD4520093C34E /* Length.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Length.swift; sourceTree = "<group>"; };
+		7D527D612A10349F0093C34E /* Tempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempo.swift; sourceTree = "<group>"; };
+		7D527D632A1034AA0093C34E /* Volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volume.swift; sourceTree = "<group>"; };
 		7DD3A7CD2A0D6ADA0060347D /* DesafioUm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioUm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DD3A7D02A0D6ADA0060347D /* DesafioUmApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioUmApp.swift; sourceTree = "<group>"; };
 		7DD3A7D22A0D6ADA0060347D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +61,10 @@
 			children = (
 				7DD3A7D02A0D6ADA0060347D /* DesafioUmApp.swift */,
 				7DD3A7D22A0D6ADA0060347D /* ContentView.swift */,
+				7D527D632A1034AA0093C34E /* Volume.swift */,
+				7D527D612A10349F0093C34E /* Tempo.swift */,
+				7D527D5F2A0FD4520093C34E /* Length.swift */,
+				7D527D5D2A0FD4260093C34E /* Temperature.swift */,
 				7DD3A7D42A0D6ADB0060347D /* Assets.xcassets */,
 				7DD3A7D62A0D6ADB0060347D /* Preview Content */,
 			);
@@ -138,7 +150,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7DD3A7D32A0D6ADA0060347D /* ContentView.swift in Sources */,
+				7D527D602A0FD4520093C34E /* Length.swift in Sources */,
+				7D527D5E2A0FD4260093C34E /* Temperature.swift in Sources */,
+				7D527D642A1034AA0093C34E /* Volume.swift in Sources */,
 				7DD3A7D12A0D6ADA0060347D /* DesafioUmApp.swift in Sources */,
+				7D527D622A10349F0093C34E /* Tempo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
