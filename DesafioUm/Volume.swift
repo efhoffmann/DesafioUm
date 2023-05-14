@@ -8,17 +8,57 @@
 import SwiftUI
 
 struct Volume: View {
+    init() {
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
+    enum Volume: String, Equatable, CaseIterable {
+        case litros
+        case decilitros
+        case centolitros
+        case mililitros
+    }
+           
+    @State private var number: Double = 0
+    @State private var unitInput = Volume.litros
+    @State private var unitOutput = Volume.mililitros
+                            
     var body: some View {
-        ZStack {
-            Color.yellow.opacity(0.3)
-            
-            Text("ola")
-            
-               
-        }
-        .ignoresSafeArea()
-        
-        
+         
+            NavigationView {
+                Form {
+      
+                    Section(header: Text("Escolha um valor de entrada")) {
+                        TextField("Valor", value: $number, format: .number)
+                    }
+                    
+                    Picker("Eu tenho o volume em:", selection: $unitInput) {
+                        ForEach(Volume.allCases, id: \.self) { item in
+                            Text(item.rawValue)
+                        }
+                    }
+                    
+                    Picker("E quero transformar em:", selection: $unitOutput) {
+                        ForEach(Volume.allCases, id: \.self) { item in
+                            Text(item.rawValue)
+                        }
+                    }
+                    
+                    Section {
+                        Text("\(number, format: .number) \(unitInput.rawValue) é igual a  \(unitOutput.rawValue)")
+                        
+                    } header: {
+                        Text("Resultado")
+                    }
+                    
+                }
+                .scrollContentBackground(.hidden)
+                .background(Color.yellow).opacity(0.7)
+                .navigationTitle("Volume")
+                .navigationBarTitleDisplayMode(.inline)
+       
+            }
+       
     }
 }
 

@@ -19,63 +19,50 @@ struct Length: View {
         case milimetros
     }
     
-    @State private var number: Double = 0
+    @State private var number: Double = 0.0
     @State private var unitInput: Medida = .metros
     @State private var unitOutput = Medida.quilometros
     
-    var calculo: Double {
-        var resultado: Double = 0.0
-        
-        if unitInput == Medida.metros && unitOutput == Medida.quilometros {
-            resultado = number / 1000
-        } else if unitInput == Medida.metros && unitOutput == Medida.centimetros {
-            resultado = number * 100
-        } else if unitInput == Medida.quilometros && unitOutput == Medida.metros {
-            resultado = number * 1000
-        } else if unitInput == Medida.quilometros && unitOutput == Medida.centimetros {
-            resultado = number * 100000
-        }
-        
-            return resultado
-        }
-        
-        var calculoEntrada: Measurement<UnitLength> {
+        var calculoEntrada: Double {
+            let valor = Double(number) ?? 0
+            var entrada = 0.0
+            var saida = 0.0
+            
             switch unitInput {
-            case .centimetros:
-                return Measurement(value: number, unit: UnitLength.centimeters)
-            case .quilometros:
-                return Measurement(value: number, unit: UnitLength.kilometers)
-            case .hectometros:
-                return Measurement(value: number, unit: UnitLength.hectometers)
-            case .decametros:
-                return Measurement(value: number, unit: UnitLength.decameters)
-            case .metros:
-                return Measurement(value: number, unit: UnitLength.meters)
-            case .decimetros:
-                return Measurement(value: number, unit: UnitLength.decimeters)
             case .milimetros:
-                return Measurement(value: number, unit: UnitLength.millimeters)
+                entrada = valor / 1000
+            case .centimetros:
+                entrada = valor / 100
+            case .decimetros:
+                entrada = valor / 10
+            case .decametros:
+                entrada = valor * 10
+            case .hectometros:
+                entrada = valor * 100
+            case .quilometros:
+                entrada = valor * 1000
+            default:
+                entrada = valor
+           
             }
-        }
-        
-        var calculoSaida: Measurement<UnitLength> {
-            let output = calculoEntrada
+            
             switch unitOutput {
-            case .centimetros:
-                return output.converted(to: .centimeters)
-            case .quilometros:
-                return output.converted(to: .kilometers)
-            case .hectometros:
-                return output.converted(to: .hectometers)
-            case .decametros:
-                return output.converted(to: .decameters)
-            case .metros:
-                return output.converted(to: .meters)
-            case .decimetros:
-                return output.converted(to: .decimeters)
             case .milimetros:
-                return output.converted(to: .millimeters)
+                saida = entrada * 1000
+            case .centimetros:
+                saida = entrada * 100
+            case .decimetros:
+                saida = entrada * 10
+            case .decametros:
+                saida = entrada / 10
+            case .hectometros:
+                saida = entrada / 100
+            case .quilometros:
+                saida = entrada / 1000
+            default:
+                saida = entrada
             }
+            return saida
         }
         
     
@@ -83,8 +70,7 @@ struct Length: View {
     var body: some View {
         
         NavigationView {
-            ZStack{
-                Color.green
+            
             Form {
                 Section {
                     TextField("Valor", value: $number, format: .number)
@@ -92,32 +78,35 @@ struct Length: View {
                     Text("Escolha um valor de entrada")
                 }
                 
-                Picker("Escolha medida origem", selection: $unitInput) {
+                Picker("Eu tenho a medida em:", selection: $unitInput) {
                     ForEach(Medida.allCases, id: \.self) { item in
                         Text(item.rawValue)
                     }
                 }
                 
-                Picker("Escolha medida destino", selection: $unitOutput) {
+                Picker("E quero transformar em:", selection: $unitOutput) {
                     ForEach(Medida.allCases, id: \.self) { item in
                         Text(item.rawValue)
                     }
                 }
                 
                 Section {
-                    Text("\(number, format: .number) \(unitInput.rawValue) é igual a \(calculo.formatted()) \(unitOutput.rawValue)")
+                    Text("\(number, format: .number) \(unitInput.rawValue) é igual a \(calculoEntrada.formatted()) \(unitOutput.rawValue)")
                     
                 } header: {
                     Text("Resultado")
                 }
                 
             }
-            .navigationTitle("Conversões")
+            .scrollContentBackground(.hidden)
+            .background(Color.green).opacity(0.7)
+            .navigationTitle("Comprimento")
+            .navigationBarTitleDisplayMode(.inline)
             
         }
         
             
-    }
+    
     }
 }
 

@@ -17,10 +17,11 @@ struct ContentView: View {
                     .ignoresSafeArea()
                 VStack{
                     
-                    Text("Escolha uma unidade de medida:")
+                    Text("Escolha uma unidade de medida para converter:")
                         .font(.custom(
                             "AmericanTypewriter",
                             fixedSize: 20))
+                        .multilineTextAlignment(.center)
                     Spacer()
                     VStack(alignment: .leading) {
                         NavigationLink(destination: Temperature()) {
