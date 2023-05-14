@@ -15,7 +15,7 @@ struct Volume: View {
     enum Volume: String, Equatable, CaseIterable {
         case litros
         case decilitros
-        case centolitros
+        case centilitros
         case mililitros
     }
            
@@ -23,6 +23,37 @@ struct Volume: View {
     @State private var unitInput = Volume.litros
     @State private var unitOutput = Volume.mililitros
                             
+    var calculoEntrada: Double {
+        let valor = Double(number) ?? 0
+        var entrada = 0.0
+        var saida = 0.0
+        
+        switch unitInput {
+        case .mililitros:
+            entrada = valor / 1000
+        case .centilitros:
+            entrada = valor / 100
+        case .decilitros:
+            entrada = valor / 10
+        default:
+            entrada = valor
+        }
+        
+        switch unitOutput {
+        case .mililitros:
+            saida = entrada * 1000
+        case .centilitros:
+            saida = entrada * 100
+        case .decilitros:
+            saida = entrada * 10
+        default:
+            saida = entrada
+        }
+        
+        return saida
+        
+    }
+    
     var body: some View {
          
             NavigationView {
@@ -45,7 +76,7 @@ struct Volume: View {
                     }
                     
                     Section {
-                        Text("\(number, format: .number) \(unitInput.rawValue) é igual a  \(unitOutput.rawValue)")
+                        Text("\(number, format: .number) \(unitInput.rawValue) é igual a \(calculoEntrada.formatted()) \(unitOutput.rawValue)")
                         
                     } header: {
                         Text("Resultado")
